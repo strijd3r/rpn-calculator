@@ -24,5 +24,5 @@ import (
 
 func TestRpnCalculator(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "RPN Calculator Stack Suite")
+	RunSpecs(t, "RPN Stack Suite")
 }
