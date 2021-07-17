@@ -144,4 +144,10 @@ var _ = Describe("Stack", func() {
 			})
 		})
 	})
+
+	Context("stack.String()", func() {
+		It("should return the computed stack represented as a string", func() {
+			Expect(s.String()).To(Equal(""))
+		})
+	})
 })

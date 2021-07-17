@@ -16,6 +16,7 @@ limitations under the License.
 package stack
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -47,6 +48,14 @@ func (s *Stack) Print(output io.Writer) {
 		}
 		fmt.Fprint(output, v)
 	}
+}
+
+// String writes the output of the print function to a buffer
+// and returns a serialized string
+func (s *Stack) String() string {
+	b := &bytes.Buffer{}
+	s.Print(b)
+	return b.String()
 }
 
 // Size returns the length of the current stack
