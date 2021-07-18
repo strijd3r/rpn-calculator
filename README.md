@@ -8,7 +8,7 @@
 ![Top language](https://img.shields.io/github/languages/top/strijd3r/rpn-calculator)
 ---
 
-Some of the best calculators in the world have an 'RPN' (reverse polish notation) mode. Please implement a command-line RPN calculator as your code challenge. However, We still feel it is worth to give you a big picture of the future requirments and hoping you can take them into consideration when design your solution. Ultimately, we would like to build an online tool which is powerful and highly flexible. The work has been divided into 3 stages and is your code challenge.
+In reverse Polish notation, the operators follow their operands; for instance, to add 3 and 4 together, one would write 3 4 + rather than 3 + 4. If there are multiple operations, operators are given immediately after their second operands; so the expression written 3 − 4 + 5 in conventional notation would be written 3 4 − 5 + in reverse Polish notation: 4 is first subtracted from 3, then 5 is added to it. An advantage of reverse Polish notation is that it removes the need for parentheses that are required by infix notation. While 3 − 4 × 5 can also be written 3 − (4 × 5), that means something quite different from (3 − 4) × 5. In reverse Polish notation, the former could be written 3 4 5 × −, which unambiguously means 3 (4 5 ×) − which reduces to 3 20 − (which can further be reduced to -17); the latter could be written 3 4 − 5 × (or 5 3 4 − ×, if keeping similar formatting), which unambiguously means (3 4 −) 5 ×.
 
 ## Prerequisites
 * [Golang](https://golang.org) > 0.15
@@ -18,6 +18,15 @@ Some of the best calculators in the world have an 'RPN' (reverse polish notation
 
 ## Running, building and testing
 This package contains a `Makefile` which has three commands `build`, `clean` and `test`.
+
+## Running the calculator
+The calculator can be run in multiple ways, when running it from a produced binary use the provided `rpn-calculator` binary. For development you can run `go run main.go` with additional arguments.
+
+### Interactive
+Run `rpn-calculator -i` to run in interactive shell mode
+
+### Command line input
+Run `rpn-calculator 1 2 *` to calculate the given input, beware to quote shell arguments like `*`
 
 ## Releasing
 To create a new release just create a new `tag` and push this to Github. The Github actions will prepare a new release.
