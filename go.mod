@@ -1,4 +1,4 @@
-module go.awx.im/challenges/rpn-calculator
+module github.com/strijd3r/rpn-calculator
 
 go 1.16
 

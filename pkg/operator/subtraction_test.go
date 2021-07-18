@@ -19,8 +19,8 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"go.awx.im/challenges/rpn-calculator/pkg/operator"
-	"go.awx.im/challenges/rpn-calculator/pkg/stack"
+	"github.com/strijd3r/rpn-calculator/pkg/operator"
+	"github.com/strijd3r/rpn-calculator/pkg/stack"
 )
 
 var _ = Describe("SubtractionOperator", func() {

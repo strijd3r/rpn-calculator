@@ -16,7 +16,7 @@ limitations under the License.
 package operator
 
 import (
-	"go.awx.im/challenges/rpn-calculator/pkg/stack"
+	"github.com/strijd3r/rpn-calculator/pkg/stack"
 )
 
 // MultiplicationOperator provides a simple interface to compute the

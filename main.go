@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "go.awx.im/challenges/rpn-calculator/cmd"
+import "github.com/strijd3r/rpn-calculator/cmd"
 
 func main() {
 	cmd.Execute()

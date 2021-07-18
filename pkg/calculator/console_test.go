@@ -21,7 +21,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"go.awx.im/challenges/rpn-calculator/pkg/calculator"
+	"github.com/strijd3r/rpn-calculator/pkg/calculator"
 )
 
 var _ = Describe("Calculator", func() {

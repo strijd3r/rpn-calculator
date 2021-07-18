@@ -15,7 +15,7 @@ limitations under the License.
 */
 package operator
 
-import "go.awx.im/challenges/rpn-calculator/pkg/stack"
+import "github.com/strijd3r/rpn-calculator/pkg/stack"
 
 // AdditionOperator is an implementation of the operator.Operator
 // interface which performs the addition of the last 2 numbers

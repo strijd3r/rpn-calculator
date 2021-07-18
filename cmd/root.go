@@ -20,7 +20,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"go.awx.im/challenges/rpn-calculator/pkg/calculator"
+	"github.com/strijd3r/rpn-calculator/pkg/calculator"
 )
 
 // Internal pointer to the calculator

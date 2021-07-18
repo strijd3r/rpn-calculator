@@ -15,7 +15,7 @@ limitations under the License.
 */
 package operator
 
-import "go.awx.im/challenges/rpn-calculator/pkg/stack"
+import "github.com/strijd3r/rpn-calculator/pkg/stack"
 
 // Operator defines the common interface for any operator. It provides
 // the functionality to operate a command on a stack, allowing the operator

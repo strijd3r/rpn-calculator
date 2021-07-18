@@ -18,7 +18,7 @@ package operator
 import (
 	"math"
 
-	"go.awx.im/challenges/rpn-calculator/pkg/stack"
+	"github.com/strijd3r/rpn-calculator/pkg/stack"
 )
 
 // SqrtOperator provides a simple interface to compute the
