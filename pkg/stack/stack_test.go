@@ -122,6 +122,7 @@ var _ = Describe("Stack", func() {
 		})
 	})
 
+	// @todo: write test for rounding decimal places
 	Context("stack.Print(io.Writer)", func() {
 		var b *bytes.Buffer
 		BeforeEach(func() {
