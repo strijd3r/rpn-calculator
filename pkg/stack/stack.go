@@ -40,6 +40,11 @@ func NewStack() *Stack {
 	return &Stack{}
 }
 
+// Reset resets the stack to an empty slice of float64 values
+func (s *Stack) Reset() {
+	s.stack = []float64{}
+}
+
 // Print is a helper method to print the current stack in
 // human readable format with a maximum of 10 decimal places
 // to the provided io.Writer interface.

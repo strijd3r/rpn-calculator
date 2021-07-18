@@ -30,7 +30,7 @@ var _ = Describe("Stack", func() {
 		s = stack.NewStack()
 	})
 
-	Context("stack.Push(...float64)", func() {
+	Context("Push(...float64)", func() {
 		When("there is only one value push", func() {
 			It("has a size of 1", func() {
 				s.Push(0)
@@ -46,7 +46,7 @@ var _ = Describe("Stack", func() {
 		})
 	})
 
-	Context("stack.Pop() (float64, error)", func() {
+	Context("Pop() (float64, error)", func() {
 		When("the stack is empty", func() {
 			It("will raise an error", func() {
 				f, err := s.Pop()
@@ -71,7 +71,7 @@ var _ = Describe("Stack", func() {
 		})
 	})
 
-	Context("stack.PushString(...string)", func() {
+	Context("PushString(...string) error", func() {
 		When("there is only one value push", func() {
 			It("has a size of 1", func() {
 				err := s.PushString("0")
@@ -107,7 +107,7 @@ var _ = Describe("Stack", func() {
 		})
 	})
 
-	Context("stack.Size()", func() {
+	Context("Size() int", func() {
 		When("the stack has values", func() {
 			It("should print the current stack", func() {
 				s.Push(0, 1, 2, 3)
@@ -122,8 +122,18 @@ var _ = Describe("Stack", func() {
 		})
 	})
 
+	Context("Reset()", func() {
+		It("should clear the stack when its not empty", func() {
+			Expect(s.Size()).To(Equal(0))
+			s.Push(1, 2, 3)
+			Expect(s.Size()).To(Equal(3))
+			s.Reset()
+			Expect(s.Size()).To(Equal(0))
+		})
+	})
+
 	// @todo: write test for rounding decimal places
-	Context("stack.Print(io.Writer)", func() {
+	Context("Print(io.Writer)", func() {
 		var b *bytes.Buffer
 		BeforeEach(func() {
 			b = new(bytes.Buffer)
@@ -146,7 +156,7 @@ var _ = Describe("Stack", func() {
 		})
 	})
 
-	Context("stack.String()", func() {
+	Context("String() string", func() {
 		It("should return the computed stack represented as a string", func() {
 			Expect(s.String()).To(Equal(""))
 		})
