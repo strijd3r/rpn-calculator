@@ -1,5 +1,11 @@
 # RPN Calculator
-![Github Actions](https://github.com/github/docs/actions/workflows/goreleaser.yml/badge.svg)
+[![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/strijd3r/rpn-calculator)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/strijd3r/rpn-calculator)
+[![Github Actions](https://github.com/strijd3r/rpn-calculator/actions/workflows/goreleaser.yml/badge.svg)](https://github.com/strijd3r/rpn-calculator/actions/workflows/goreleaser.yml)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/strijd3r/rpn-calculator)
+![Languages](https://img.shields.io/github/languages/count/strijd3r/rpn-calculator)
+![Top language](https://img.shields.io/github/languages/top/strijd3r/rpn-calculator)
 ---
 
 Some of the best calculators in the world have an 'RPN' (reverse polish notation) mode. Please implement a command-line RPN calculator as your code challenge. However, We still feel it is worth to give you a big picture of the future requirments and hoping you can take them into consideration when design your solution. Ultimately, we would like to build an online tool which is powerful and highly flexible. The work has been divided into 3 stages and is your code challenge.
