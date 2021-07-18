@@ -41,9 +41,7 @@ var rootCmd = &cobra.Command{
 	// to iterate over a the stack and apply any operator methods to its
 	// aggregated result
 	PreRunE: func(cmd *cobra.Command, args []string) (err error) {
-		if calc, err = calculator.NewDefaultCalculator(); err != nil {
-			return
-		}
+		calc, err = calculator.NewDefaultCalculator()
 		return
 	},
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
