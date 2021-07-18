@@ -5,7 +5,8 @@ build:
 
 .PHONY: deps
 deps:
-	go mod download
+	go get -u github.com/onsi/ginkgo/ginkgo
+	go get -u github.com/onsi/gomega
 
 .PHONY: clean
 clean:
