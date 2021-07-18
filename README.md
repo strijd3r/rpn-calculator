@@ -11,10 +11,10 @@
 Some of the best calculators in the world have an 'RPN' (reverse polish notation) mode. Please implement a command-line RPN calculator as your code challenge. However, We still feel it is worth to give you a big picture of the future requirments and hoping you can take them into consideration when design your solution. Ultimately, we would like to build an online tool which is powerful and highly flexible. The work has been divided into 3 stages and is your code challenge.
 
 ## Prerequisites
-* Golang > 0.15
-* (Goreleaser)[https://goreleaser.com/]
-* (Pre-commit)[https://pre-commit.com/]
-* (Golang pre-commit hook)[https://github.com/dnephin/pre-commit-golang/]
+* [Golang](https://golang.org) > 0.15
+* [Goreleaser](https://goreleaser.com/)
+* [Pre-commit](https://pre-commit.com/)
+* [Golang pre-commit hook](https://github.com/dnephin/pre-commit-golang/)
 
 ## Running, building and testing
 This package contains a `Makefile` which has three commands `build`, `clean` and `test`.
