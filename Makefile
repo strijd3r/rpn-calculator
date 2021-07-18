@@ -14,5 +14,4 @@ clean:
 
 .PHONY: test
 test:
-	pre-commit run -a
 	ginkgo -r -cover --randomizeAllSpecs --randomizeSuites --race --trace **/*
