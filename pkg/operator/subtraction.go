@@ -17,10 +17,14 @@ package operator
 
 import "go.awx.im/challenges/rpn-calculator/pkg/stack"
 
+// SubtractionOperator provides a simple interface to compute two
+// numbers in the stack.
 type SubtractionOperator struct {
 	ArithmeticOperator
 }
 
+// NewSubtractionOperator is a factory method to instantiate a new
+// SubtractionOperator seeded with a default ArithmeticOpertor.
 func NewSubtractionOperator() SubtractionOperator {
 	return SubtractionOperator{NewArithmeticOperator()}
 }
@@ -31,11 +35,12 @@ func (o SubtractionOperator) Identifier() string {
 	return "-"
 }
 
+// Operate gets the last two entries from the stack and then performs
+// the subtraction of both entries.
 func (o SubtractionOperator) Operate(s *stack.Stack) (err error) {
 	var a, b float64
-	if a, b, err = o.Get(s); err != nil {
-		return
+	if a, b, err = o.Get(s); err == nil {
+		s.Push(a - b)
 	}
-	s.Push(a - b)
 	return
 }

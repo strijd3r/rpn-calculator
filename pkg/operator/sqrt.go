@@ -21,8 +21,12 @@ import (
 	"go.awx.im/challenges/rpn-calculator/pkg/stack"
 )
 
+// SqrtOperator provides a simple interface to compute the
+// square root of the last value on the stack
 type SqrtOperator struct{}
 
+// NewSubtractionOperator is a factory method to instantiate a new
+// SqrtOperator
 func NewSqrtOperator() SqrtOperator {
 	return SqrtOperator{}
 }
@@ -33,6 +37,8 @@ func (o SqrtOperator) Identifier() string {
 	return "sqrt"
 }
 
+// Operate gets the last entry of the stack and performs math.Sqrt
+// on it.
 func (o SqrtOperator) Operate(s *stack.Stack) (err error) {
 	var a float64
 	if a, err = s.Pop(); err != nil {

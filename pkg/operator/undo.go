@@ -29,12 +29,12 @@ func NewUndoOperator() UndoOperator {
 }
 
 // Identifier returns the operation a user can input whilst performing
-// operations on the stack
+// operations on the stack.
 func (o UndoOperator) Identifier() string {
 	return "undo"
 }
 
-// Operator pops the last item from the stack
+// Operate pops the last item from the stack.
 func (o UndoOperator) Operate(s *stack.Stack) (err error) {
 	_, err = s.Pop()
 	return

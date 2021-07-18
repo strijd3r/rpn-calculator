@@ -36,11 +36,12 @@ func (o DivisionOperator) Identifier() string {
 	return "/"
 }
 
+// Operate divides two numbers on the stack, it leverages the ArtithmeticOperator
+// to easily define the last two digits and sets the return value.
 func (o DivisionOperator) Operate(s *stack.Stack) (err error) {
 	var a, b float64
-	if a, b, err = o.Get(s); err != nil {
-		return
+	if a, b, err = o.Get(s); err == nil {
+		s.Push(a / b)
 	}
-	s.Push(a / b)
 	return
 }

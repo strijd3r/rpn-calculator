@@ -17,7 +17,9 @@ package operator
 
 import "go.awx.im/challenges/rpn-calculator/pkg/stack"
 
-// Operator defines the interace for any operator to implement
+// Operator defines the common interface for any operator. It provides
+// the functionality to operate a command on a stack, allowing the operator
+// to pop and push items from the stack.
 type Operator interface {
 	Identifier() string
 	Operate(*stack.Stack) error

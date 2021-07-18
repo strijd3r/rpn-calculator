@@ -39,9 +39,8 @@ func (o AdditionOperator) Identifier() string {
 // to easily define the last two digits and sets the return value.
 func (o AdditionOperator) Operate(s *stack.Stack) (err error) {
 	var a, b float64
-	if a, b, err = o.Get(s); err != nil {
-		return
+	if a, b, err = o.Get(s); err == nil {
+		s.Push(a + b)
 	}
-	s.Push(a + b)
 	return
 }

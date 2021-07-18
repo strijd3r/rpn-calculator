@@ -24,18 +24,21 @@ import "go.awx.im/challenges/rpn-calculator/pkg/stack"
 // just be a private method in this package
 type ArithmeticOperator struct{}
 
+// NewArithmeticOperator creates a new base implementation for the arithmetic
+// operator
+func NewArithmeticOperator() ArithmeticOperator {
+	return ArithmeticOperator{}
+}
+
 // Get retrieves the last two values of the stack, or an error
 // when the stack is too small.
 func (o ArithmeticOperator) Get(s *stack.Stack) (a float64, b float64, err error) {
 	if b, err = s.Pop(); err != nil {
 		return
 	}
-	a, err = s.Pop()
+	if a, err = s.Pop(); err != nil {
+		s.Push(b)
+		return
+	}
 	return
-}
-
-// NewArithmeticOperator creates a new base implementation for the arithmetic
-// operator
-func NewArithmeticOperator() ArithmeticOperator {
-	return ArithmeticOperator{}
 }
