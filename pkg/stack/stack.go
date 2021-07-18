@@ -20,6 +20,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"strconv"
 	"sync"
 )
@@ -40,13 +41,14 @@ func NewStack() *Stack {
 }
 
 // Print is a helper method to print the current stack in
-// human readable format to the provided io.Writer interface.
+// human readable format with a maximum of 10 decimal places
+// to the provided io.Writer interface.
 func (s *Stack) Print(output io.Writer) {
 	for i, v := range s.stack {
 		if i != 0 {
 			fmt.Fprint(output, " ")
 		}
-		fmt.Fprint(output, v)
+		fmt.Fprint(output, math.Round(v*1e10)/1e10)
 	}
 }
 
