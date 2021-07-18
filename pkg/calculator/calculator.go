@@ -25,31 +25,40 @@ import (
 	"go.awx.im/challenges/rpn-calculator/pkg/stack"
 )
 
-var (
-	// ErrInvalidOperator
-	ErrInvalidOperator = errors.New("invalid operator specific")
-)
+// define a special exist operator
+const exitOperator = "exit"
 
-// Calculator is
+// ErrInvalidOperator is a predefined error for invalid operators.
+var ErrInvalidOperator = errors.New("invalid operator specific")
+
+// ErrUserExited is a hacky way to exit the current operation
+var ErrUserExited = errors.New("user exited the operation")
+
+// Calculator is the main application which allows parsing input
+// and adds item to the stack or performs operations on the stack.
 type Calculator struct {
 	s *stack.Stack
 	o map[string]operator.Operator
 }
 
-// NewDefaultCalculator is
+// NewDefaultCalculator is a factory method to return a new Calculator
+// instance with all default operators.
 func NewDefaultCalculator() (*Calculator, error) {
 	return NewCalculator(
 		operator.NewAdditionOperator(),
-		operator.NewMultiplicationOperator(),
-		operator.NewSubtractionOperator(),
 		operator.NewDivisionOperator(),
-		operator.NewSqrtOperator(),
+		operator.NewMultiplicationOperator(),
 		operator.NewSinOperator(),
+		operator.NewSqrtOperator(),
+		operator.NewSubtractionOperator(),
+		operator.NewClearOperator(),
 		operator.NewUndoOperator(),
 	)
 }
 
-// NewCalculator
+// NewCalculator is a factory method to create a new Calculator instance and
+// adds the provided operators to its internal map. It detects duplicate
+// operator types and invalid operators which do not define any operation.
 func NewCalculator(operators ...operator.Operator) (c *Calculator, err error) {
 	c = &Calculator{
 		s: stack.NewStack(),
@@ -73,17 +82,21 @@ func (c *Calculator) Stack() *stack.Stack {
 	return c.s
 }
 
-// Calculate is
+// Calculate receives an input string, tokenizes it and checks whether the input is
+// a) a valid operator or b) a valid float64 value.
 func (c *Calculator) Calculate(input string) (err error) {
 	var scan scanner.Scanner
 	scan.Init(strings.NewReader(input))
 
 	for tok := scan.Scan(); tok != scanner.EOF; tok = scan.Scan() {
 		t := scan.TokenText()
+		if t == exitOperator {
+			return ErrUserExited
+		}
 		val, ok := c.o[t]
 		if ok {
 			if err = val.Operate(c.s); err != nil {
-				return fmt.Errorf("operator %s (position: %d): insufficient parameters", t, scan.Position.Offset)
+				return fmt.Errorf("operator %s (position: %d): insufficient parameters", t, scan.Position.Offset+1)
 			}
 		} else {
 			if err = c.s.PushString(t); err != nil {

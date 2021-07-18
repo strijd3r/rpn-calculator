@@ -103,13 +103,20 @@ var _ = Describe("Calculator", func() {
 			It("should calculate and raise an error with a message", func() {
 				tests = map[string]string{
 					"invalid":                 "operator invalid (position: 0): invalid operator",
-					"12 3 * 12 24 + * sqrt *": "operator * (position: 22): insufficient parameters",
+					"12 3 * 12 24 + * sqrt *": "operator * (position: 23): insufficient parameters",
 				}
 				for k, v := range tests {
 					e := c.Calculate(k)
 					Expect(e).To(HaveOccurred())
 					Expect(e.Error()).To(Equal(v))
 				}
+			})
+		})
+
+		When("a user manually exits the calculation", func() {
+			It("should raise a user error", func() {
+				e := c.Calculate("1 2 exit")
+				Expect(e).To(HaveOccurred())
 			})
 		})
 	})
