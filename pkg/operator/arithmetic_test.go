@@ -45,7 +45,7 @@ var _ = Describe("ArithmeticOperator", func() {
 				a, b, err = o.Get(s)
 				Expect(err).To(HaveOccurred())
 				Expect(s.Size()).To(Equal(1))
-				Expect(b).To(Equal(1.0))
+				Expect(b).To(Equal(0.0))
 
 				a, err = s.Pop()
 				Expect(err).NotTo(HaveOccurred())

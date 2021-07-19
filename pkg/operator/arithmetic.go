@@ -15,7 +15,14 @@ limitations under the License.
 */
 package operator
 
-import "github.com/strijd3r/rpn-calculator/pkg/stack"
+import (
+	"errors"
+
+	"github.com/strijd3r/rpn-calculator/pkg/stack"
+)
+
+// ErrStackTooSmall is raised when the stack has too little items.
+var ErrStackTooSmall = errors.New("expected at least 2 items in the stack")
 
 // ArithmeticOperator is a base struct which implements some
 // helper functions to perform common operations on the stack.
@@ -33,12 +40,11 @@ func NewArithmeticOperator() ArithmeticOperator {
 // Get retrieves the last two values of the stack, or an error
 // when the stack is too small.
 func (o ArithmeticOperator) Get(s *stack.Stack) (a float64, b float64, err error) {
-	if b, err = s.Pop(); err != nil {
+	if s.Size() < 2 {
+		err = ErrStackTooSmall
 		return
 	}
-	if a, err = s.Pop(); err != nil {
-		s.Push(b)
-		return
-	}
+	b, _ = s.Pop()
+	a, _ = s.Pop()
 	return
 }
