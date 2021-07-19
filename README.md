@@ -8,8 +8,23 @@
 ![Top language](https://img.shields.io/github/languages/top/strijd3r/rpn-calculator)
 ---
 
+## Introduction
 In reverse Polish notation, the operators follow their operands; for instance, to add 3 and 4 together, one would write 3 4 + rather than 3 + 4. If there are multiple operations, operators are given immediately after their second operands; so the expression written 3 − 4 + 5 in conventional notation would be written 3 4 − 5 + in reverse Polish notation: 4 is first subtracted from 3, then 5 is added to it. An advantage of reverse Polish notation is that it removes the need for parentheses that are required by infix notation. While 3 − 4 × 5 can also be written 3 − (4 × 5), that means something quite different from (3 − 4) × 5. In reverse Polish notation, the former could be written 3 4 5 × −, which unambiguously means 3 (4 5 ×) − which reduces to 3 20 − (which can further be reduced to -17); the latter could be written 3 4 − 5 × (or 5 3 4 − ×, if keeping similar formatting), which unambiguously means (3 4 −) 5 ×.
 
+## Table of contents
+- [RPN Calculator](#rpn-calculator)
+  - [!Top language](#)
+  - [Introduction](#introduction)
+  - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Running, building and testing](#running-building-and-testing)
+  - [Running the calculator](#running-the-calculator)
+    - [Interactive](#interactive)
+    - [Command line input](#command-line-input)
+  - [Releasing](#releasing)
+  - [Requirements](#requirements)
+  - [Addendum](#addendum)
+  
 ## Prerequisites
 * [Golang](https://golang.org) > 0.15
 * [Goreleaser](https://goreleaser.com/)
@@ -23,10 +38,10 @@ This package contains a `Makefile` which has three commands `build`, `clean` and
 The calculator can be run in multiple ways, when running it from a produced binary use the provided `rpn-calculator` binary. For development you can run `go run main.go` with additional arguments.
 
 ### Interactive
-Run `rpn-calculator -i` to run in interactive shell mode
+Run `rpn-calculator -i` or `go run main.go -i` to run in interactive shell mode
 
 ### Command line input
-Run `rpn-calculator 1 2 *` to calculate the given input, beware to quote shell arguments like `*`
+Run `rpn-calculator 1 2 "*" 4 \` or `go run main.go 1 2 "*" 4 \`  to calculate the given input, beware to quote shell arguments like `*`
 
 ## Releasing
 To create a new release just create a new `tag` and push this to Github. The Github actions will prepare a new release.
@@ -45,3 +60,7 @@ To create a new release just create a new `tag` and push this to Github. The Git
 * All numbers should be formatted as plain decimal strings (ie. no engineering formatting).
 * If an operator cannot find a sufficient number of parameters on the stack, a warning is displayed: operator <operator> (position: <pos>): insufficient parameters
 * After displaying the warning, all further processing of the string terminates and the current state of the stack is displayed.
+
+## Addendum
+* The interactive console has been adapted with an improved interface allowing to easily calculate with speed.
+
