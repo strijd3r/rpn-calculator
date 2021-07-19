@@ -18,9 +18,10 @@ In reverse Polish notation, the operators follow their operands; for instance, t
   - [Table of contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
   - [Running, building and testing](#running-building-and-testing)
-  - [Running the calculator](#running-the-calculator)
-    - [Interactive](#interactive)
-    - [Command line input](#command-line-input)
+    - [Building a new binary](#building-a-new-binary)
+    - [Running the calculator](#running-the-calculator)
+    - [Installing dependencies](#installing-dependencies)
+    - [Running the tests](#running-the-tests)
   - [Releasing](#releasing)
   - [Requirements](#requirements)
   - [Addendum](#addendum)
@@ -32,16 +33,26 @@ In reverse Polish notation, the operators follow their operands; for instance, t
 * [Golang pre-commit hook](https://github.com/dnephin/pre-commit-golang/)
 
 ## Running, building and testing
-This package contains a `Makefile` which has three commands `build`, `clean` and `test`.
+This package contains a `Makefile` which has commands such as `build`, `deps`, `clean` and `test`.
 
-## Running the calculator
+### Building a new binary
+Checkout the repository and run `make build`. The produced binary can be found in `dist/calculator`
+
+### Running the calculator
 The calculator can be run in multiple ways, when running it from a produced binary use the provided `rpn-calculator` binary. For development you can run `go run main.go` with additional arguments.
 
-### Interactive
+**Interactive**
 Run `rpn-calculator -i` or `go run main.go -i` to run in interactive shell mode
 
-### Command line input
+**Command line input**
 Run `rpn-calculator 1 2 "*" 4 \` or `go run main.go 1 2 "*" 4 \`  to calculate the given input, beware to quote shell arguments like `*`
+
+### Installing dependencies
+This project requires you to have the `ginkgo` binary installed prior to running tests. Ginkgo is a BDD-style testing library which simplifies
+testing whilst allow to write languages in natural language.
+
+### Running the tests
+Tests can be run with Ginkgo by executing `make test`. This will run Ginkgo and output coverprofiles that can be parsed by any 3rd party system.
 
 ## Releasing
 To create a new release just create a new `tag` and push this to Github. The Github actions will prepare a new release.
@@ -63,4 +74,5 @@ To create a new release just create a new `tag` and push this to Github. The Git
 
 ## Addendum
 * The interactive console has been adapted with an improved interface allowing to easily calculate with speed.
+* Use of `float64` suffices to the specs, to allow further precision the system has to be refactored to support `complex128` types.
 
